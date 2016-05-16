@@ -71,8 +71,8 @@ aside a:hover { background: white;
 
  		
  img { border-radius: 30px;
- 		width: 750px;
- 		height:200px;
+ 		width: 100%;
+ 		height: auto;
  		
  		 
  		}
