@@ -23,6 +23,11 @@ body {
 	      	      
 		
 		}
+		
+h2 {
+	color: #666;
+	font-family: 'Lato', Arial, sans-serif;
+}
 
 h3 { font-weight: 650;
 		margin-left:20%;
