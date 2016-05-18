@@ -14,81 +14,67 @@ Programming final project -->
 		
 		
 		#main { 
-		width: 446px;
-	padding: 10px;
-	float: right;
-	width: 50%;
-	text-align: justify;
-	
-		
-		
-		}
+				width: 446px;
+				padding: 10px;
+				float: right;
+				width: 50%;
+				text-align: justify;	
+			}
 		
 		.mainlift { font-size: 1em;
-					margin-top: 10%;
-					float:left;		}					
+					margin-top: 10%;        
+					float:left;		
+				}					
 
 			
 			.verticalLine {
-     border-right: thick solid #003398;
-    margin-right: 13%;
-    Padding-right: 5%;
-		padding-left: 5%;
-		border-color: white;
+   							  border-right: thick solid #003398;
+    						   margin-right: 13%;
+   							  Padding-right: 5%;
+							   padding-left: 5%;
+						       border-color: white;
 							}	
 		</style>  
-		
-		 <script type="text/javascript" src="https://www.google.com/jsapi"> </script>
+		 	<script type="text/javascript" src="https://www.google.com/jsapi"> </script>
+		 	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"> </script> <!--  This is required!  It adds "loaders" for all of the Google APIs (Application Programming Interface) that will (may) be used in this program -->
+			<script type="text/javascript">  // This code *could* be put in another file...and likely I would ask you to do that, but it will make it too cumbersome for this tutorial!
+			
+		 		var freshman = 0;
+	       		var souphmore =0; 
+	    		var junoir =0;
+	        	var senoir =0;
+	       	    var csvData ="";
+	       		var commas = 1; 
+		 		var hold = "";
+		        var hold2 = "";
 		 
-		 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"> </script> <!--  This is required!  It adds "loaders" for all of the Google APIs (Application Programming Interface) that will (may) be used in this program -->
-	<script type="text/javascript">  // This code *could* be put in another file...and likely I would ask you to do that, but it will make it too cumbersome for this tutorial!
-		
-		
-		 var freshman = 0;
-	        var souphmore =0; 
-	        var junoir =0;
-	        var senoir =0;
-		
-		
-		
-		 google.load("visualization", '1', {packages:['corechart']});  // This loads the Google "Visualization" API, which is needed to use Google Charts or Google Tables.  It's required code!  The arguments are API, Version, Packages (this one is not required)
-		google.setOnLoadCallback(readData);  // The google.setOnLoadCallback method will call the specified callback function once your d
+					google.load("visualization", '1', {packages:['corechart']});  // This loads the Google "Visualization" API, which is needed to use Google Charts or Google Tables.  It's required code!  The arguments are API, Version, Packages (this one is not required)
+					google.setOnLoadCallback(readData);  // The google.setOnLoadCallback method will call the specified callback function once your d
       
-      
-		
 		function readData() {
-		  var query = new google.visualization.Query(  // This Query is asking for the data from the Google Spreadsheet
-		  //This is the URL of the data source -- it must be public and shared (see the video on creating a form and sharing settings).  This link has our TV watching data
-		  'https://docs.google.com/spreadsheets/d/18vB4zi25lgvJQ5TVEV9od1PPA9PIO4F_vMI6TvZZIGk/edit#gid=1065580186');
-		  
-		  // Send the query and when the query finishes, call the function "handleQueryResponse"
-		  query.send(handleQueryResponse);
-		}
-		function handleQueryResponse(response) { // This is enacted when the query response is returned.  If the query was successful, the response is the data table.  If the query failed, an error is returned, no table
-		  if (response.isError()) {
-		    alert('Error in query: ' + response.getMessage() + ' ' + response.getDetailedMessage());
-		    return; //Alert the user with the error code and return to the place where this function was called
-		  }
+		 						 var query = new google.visualization.Query(  // This Query is asking for the data from the Google Spreadsheet
+		  						//This is the URL of the data source -- it must be public and shared (see the video on creating a form and sharing settings).  This link has our TV watching data
+		  						'https://docs.google.com/spreadsheets/d/18vB4zi25lgvJQ5TVEV9od1PPA9PIO4F_vMI6TvZZIGk/edit#gid=1065580186');
+		  						// Send the query and when the query finishes, call the function "handleQueryResponse"
+								query.send(handleQueryResponse);
+							 }
+	
+		function handleQueryResponse(response) {// This is enacted when the query response is returned.  If the query was successful, the response is the data table.  If the query failed, an error is returned, no table
+		 											 if (response.isError()) {
+		   											 alert('Error in query: ' + response.getMessage() + ' ' + response.getDetailedMessage());
+		  											  return; //Alert the user with the error code and return to the place where this function was called
+		 										 }
+		 										 
 		  var data = response.getDataTable();
-		  console.log(data);
+		  console.log(data); 
 		  //If you prefer (now that we've done so much with parsing CSV data), you can get the data in CSV form
-		  var csvData = google.visualization.dataTableToCsv(data);
+		   csvData = google.visualization.dataTableToCsv(data);
 		  console.log(csvData);
 		  
-      
-     
-csvData = csvData.replace(/(\r\n|\n|\r)/gm,",");          
+			csvData = csvData.replace(/(\r\n|\n|\r)/gm,",");          
 	
-console.log(csvData);	
-			    
-		 var commas = 1; 
-		 var hold = "";
-		 var hold2 = "";
-		 
 		 	for(var i = 0; i < csvData.length; i++)  
-				{
-					
-						
+				{ 
 					if(commas %2 == 0) 
 						{
 							if(csvData[i] != ",")
@@ -106,25 +92,14 @@ console.log(csvData);
 							commas++
 						}    
 				} 
-				
-				  
-				
-		  
-	hold = hold.substring(0, hold.length-1);
-	
-		  				
-		  				 
-			csvData = hold; 
+				 
+			hold = hold.substring(0, hold.length-1);		 
+			csvData = hold;  
 			
-			console.log(hold);
-		
-	       
-	        
 	        	for(var i = 0; i < csvData.length; i++)  
 	        		{
 	        			if(csvData[i] != ",")
 	        				{
-	        					
 	        					if(csvData[i] == "9")
 	        						{
 	        							freshman++
@@ -144,53 +119,44 @@ console.log(csvData);
 	        						{
 	        							senoir++
 	        						}		
-	        				 
 	        				}    
-	        
 	 				}
-	 console.log(freshman);	
-	  console.log(souphmore);	
-	   console.log(junoir);	
+	 				
+	 	console.log(freshman);	
+	    console.log(souphmore);	
+	    console.log(junoir);	
 	    console.log(senoir);	
-	    
-	    return freshman;
-	    
-	    return souphmore;
-	    
-	   
-	 
- 		
+  		
 			} //This brace ends the function handleQueryResponse 
 			
-			 console.log(freshman);	
-	  console.log(souphmore);	
-	   console.log(junoir);	           
-	    console.log(senoir); 	
+		console.log(csvData);	
+	  	console.log(souphmore);	
+	  	console.log(junoir);	           
+		console.log(senoir); 	
 
-      // Load the Visualization API and the corechart package.
-      google.charts.load('current', {'packages':['corechart']});
+      		// Load the Visualization API and the corechart package.
+     		 google.charts.load('current', {'packages':['corechart']});
 
-      // Set a callback to run when the Google Visualization API is loaded.
-      google.charts.setOnLoadCallback(drawChart);
+      		// Set a callback to run when the Google Visualization API is loaded.
+      		google.charts.setOnLoadCallback(drawChart);
 
-      // Callback that creates and populates a data table,         
-      // instantiates the pie chart, passes in the data and
-      // draws it.
+      		// Callback that creates and populates a data table,         
+      		// instantiates the pie chart, passes in the data and        
+     		// draws it.
       
       
+      function drawChart() { 
       
-      function drawChart() {
-
-        // Create the data table.
-        var data = new google.visualization.DataTable();  
-        data.addColumn('string', 'Topping');
-        data.addColumn('number', 'Slices');              
-        data.addRows([
-          ['Senoirs', senoir], //My info from the google forms.         
-          ['Juniors', souphmore],
-          ['Sophomores', junoir],  
-          ['Freshman',freshman ],
-        ]);
+        					// Create the data table.
+        					var data = new google.visualization.DataTable();  
+       						 data.addColumn('string', 'Topping');
+       						 data.addColumn('number', 'Slices');              
+       						 data.addRows([
+        					  ['Senoirs', senoir], //My info from the google forms.         
+        					  ['Juniors', souphmore],
+         					  ['Sophomores', junoir],  
+        					  ['Freshman',freshman ],
+       					 ]);
 
         // These are the options I chose.        
         var options = {'title':'Class survey of Ice Cream Flavors',  
@@ -204,7 +170,7 @@ console.log(csvData);
           				'slices': {  1: {offset: 0.2},
                     			   7: {offset: 0.3}, 
                     				4: {offset: 0.3}	
-          						}, 
+          							}, 
           				'backgroundColor': 'blue',	
           				'is3D':true,  	
           				'legend': {position: 'top', textStyle: {color: 'white', fontSize: 17}},     
@@ -222,12 +188,9 @@ console.log(csvData);
 
 			
                
-	</script>
-
-		    
+		</script>   
 	</head>
-	
-	<body>
+ <body>
 	
 				<img src = Unknown.jpeg />
 		
@@ -244,35 +207,29 @@ console.log(csvData);
 		
 		<div class="verticalLine">	 
 		 <!--Load the AJAX API-->
-
-
-
-	
-	 
-	
-	
+		 
 	<h3> 
-	Model UN
-Bridging the Education Gap and Creating Global Citizens
+		Model UN
+			Bridging the Education Gap and Creating Global Citizens
 
-Model United Nations is an authentic simulation of the UN General Assembly, UN Security Council, or other multilateral body, which introduces students to the world of diplomacy, negotiation, and decision making. 
+			Model United Nations is an authentic simulation of the UN General Assembly, UN Security Council, or other multilateral body, which introduces students to the world of diplomacy, negotiation, and decision making. 
 
-At Model UN, students step into the shoes of ambassadors of countries that are members of the UN, from Argentina to Zimbabwe. The students, better known as “delegates”, debate current issues on the organization’s vast agenda. They prepare draft resolutions, plot strategy, negotiate with supporters and adversaries, resolve conflicts, and navigate the UN’s rules of procedure – all in the interest of resolving problems that affect the world.
+			At Model UN, students step into the shoes of ambassadors of countries that are members of the UN, from Argentina to Zimbabwe. The students, better known as “delegates”, debate current issues on the organization’s vast agenda. They prepare draft resolutions, plot strategy, negotiate with supporters and adversaries, resolve conflicts, and navigate the UN’s rules of procedure – all in the interest of resolving problems that affect the world.
 
-Before playing out their ambassadorial roles in Model UN, students research the particular global problem to be addressed. The problems are drawn from today’s headlines. Model UN delegates learn how the international community acts on its concerns about peace and security, human rights, the environment, food and hunger, economic development, and globalization.
+			Before playing out their ambassadorial roles in Model UN, students research the particular global problem to be addressed. The problems are drawn from today’s headlines. Model UN delegates learn how the international community acts on its concerns about peace and security, human rights, the environment, food and hunger, economic development, and globalization.
 
 <br />
 <br />
 
-Model UN delegates also look closely at the needs, aspirations, and foreign policy of the country they will “represent” at the event. The insights they gain from their exploration of history, geography, mathematics, culture, economics, and science contribute to the authenticity of the simulations once the actual role-playing gets underway, and ensures a lively and memorable experience.
+			Model UN delegates also look closely at the needs, aspirations, and foreign policy of the country they will “represent” at the event. The insights they gain from their exploration of history, geography, mathematics, culture, economics, and science contribute to the authenticity of the simulations once the actual role-playing gets underway, and ensures a lively and memorable experience.
 
-Model UN not only involves young people in the study and discussion of global issues, but also encourages the development of skills useful throughout their lives – skills including research techniques, writing, public speaking, problem-solving, conflict resolution, compromise, and cooperation.
+			Model UN not only involves young people in the study and discussion of global issues, but also encourages the development of skills useful throughout their lives – skills including research techniques, writing, public speaking, problem-solving, conflict resolution, compromise, and cooperation.
 
-The popularity of participating in Model UN has contributed to the rapid growth of this activity over the past several decades. Many Model UN participants are repeaters, since the spirit of these simulations creates an appétit for this activity more commonly known as “M-U-N Fever”.
+			The popularity of participating in Model UN has contributed to the rapid growth of this activity over the past several decades. Many Model UN participants are repeaters, since the spirit of these simulations creates an appétit for this activity more commonly known as “M-U-N Fever”.
 
-In fact, quite a few of today’s leaders in law, government, business, and the arts participated in Model UN during their academic careers – from U.S. Supreme Court Justice Stephen Breyer, to Chelsea Clinton and actor Samuel L. Jackson (Pulp Fiction).
+			In fact, quite a few of today’s leaders in law, government, business, and the arts participated in Model UN during their academic careers – from U.S. Supreme Court Justice Stephen Breyer, to Chelsea Clinton and actor Samuel L. Jackson (Pulp Fiction).
 
-As many states move to implement standards for global citizenship, Model UN is proving to be an innovative resource to prepare students for career and college success.  
+			As many states move to implement standards for global citizenship, Model UN is proving to be an innovative resource to prepare students for career and college success.  
 	</h3>
 			
 		</div>
