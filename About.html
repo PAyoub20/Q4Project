@@ -9,7 +9,7 @@ Programming final project -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->  
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="favicon.ico">
@@ -44,9 +44,8 @@ Programming final project -->
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
             <li><a href="About.html">About</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="index.html">Home</a></li>
             <li><a href="Locations.html">Locations</a></li>
           </ul>
         </div><!--/.nav-collapse -->
@@ -55,7 +54,10 @@ Programming final project -->
 
 
 		
-	<style>
+	<link href = "FinalProject2.css" rel = "stylesheet" type = "text/css"/>		
+	<style type="text/css">
+		
+		
 		#main { 
 				width: 446px;
 				padding: 10px;
@@ -64,33 +66,32 @@ Programming final project -->
 				text-align: justify;	
 			}
 		
-		.mainlift { 
-				font-size: 1em;
-				margin-top: 10%;        
-				float:left;		
+		.mainlift { font-size: 1em;
+					margin-top: 10%;        
+					float:left;		
 				}					
 
 			
 			.verticalLine {
-   					  border-right: thick solid #003398;
-    					  margin-right: 13%;
-   					 Padding-right: 5%;
-					padding-left: 5%;
-					 border-color: white;
-					}	
+   							  border-right: thick solid #003398;
+    						   margin-right: 13%;
+   							  Padding-right: 5%;
+							   padding-left: 5%;
+						       border-color: white;
+							}	
 		</style>  
 		 	<script type="text/javascript" src="https://www.google.com/jsapi"> </script>
 		 	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"> </script> <!--  This is required!  It adds "loaders" for all of the Google APIs (Application Programming Interface) that will (may) be used in this program -->
 			<script type="text/javascript">  // This code *could* be put in another file...and likely I would ask you to do that, but it will make it too cumbersome for this tutorial!
 			
-		 	var freshman = 0;
-	       		var souphmore = 0; 
-	    		var junoir = 0;
-	        	var senoir = 0;
-	       		var csvData ="";
-	       		var commas = 1; 
-			var hold = "";
-		        var hold2 = "";
+		 		var freshman = 0; //hold the number of freshman.
+	       		var souphmore = 0;  //hold the number of sophomore.
+	    		var junoir = 0; //hold the number of junior.
+	        	var senoir = 0; //hold the number of senior.
+	       	    var csvData =""; //CSVDATA  is the info from my google sheets
+	       		var commas = 1; //holds the number of commas used.
+		 		var hold = ""; //holds info will manipulating it.
+		 		
 		 
 					google.load("visualization", '1', {packages:['corechart']});  // This loads the Google "Visualization" API, which is needed to use Google Charts or Google Tables.  It's required code!  The arguments are API, Version, Packages (this one is not required)
 					google.setOnLoadCallback(readData);  // The google.setOnLoadCallback method will call the specified callback function once your d
@@ -112,63 +113,72 @@ Programming final project -->
 		  var data = response.getDataTable();
 		  console.log(data); 
 		  //If you prefer (now that we've done so much with parsing CSV data), you can get the data in CSV form
-		   csvData = google.visualization.dataTableToCsv(data);
-		  console.log(csvData);
-		  
-			csvData = csvData.replace(/(\r\n|\n|\r)/gm,",");          
-	
-		 	for(var i = 0; i < csvData.length; i++)  
+		   csvData = google.visualization.dataTableToCsv(data); 		  
+			csvData = csvData.replace(/(\r\n|\n|\r)/gm,",");    //Makes all the break lines in CSVDATA commas.      
+	 
+	function CSVManipulation()
+		{
+		 	for(var i = 0; i < csvData.length; i++)  //for loop that cycles through CVSDATA.
 				{ 
 					if(commas %2 == 0) 
 						{
 							if(csvData[i] != ",")
 							{
-								hold += csvData[i]          
+								hold += csvData[i] //adds values to hold.
 							}
 								if(csvData[i+1] == ",")
 									{
-										hold += "," 
+										hold += "," //adds commas to hold. 
 									}
 						}
 					
 					if(csvData[i] == ",")
 						{
-							commas++
+							commas++ //concatenates commas.
 						}    
 				} 
 				 
 			hold = hold.substring(0, hold.length-1);		 
 			csvData = hold;  
+		}
+				CSVManipulation() //calling the function.
 			
-	        	for(var i = 0; i < csvData.length; i++)  
+			
+		function chartVaribleValues()
+			{
+	        	for(var i = 0; i < csvData.length; i++)  //Cycles thought the new CSVDATA.
 	        		{
-	        			if(csvData[i] != ",")
+	        			if(csvData[i] != ",") //if csvData[i] doesn't equal ",'.
 	        				{
-	        					if(csvData[i] == "9")
+	        					if(csvData[i] == "9") //if csvData[i]  is 9 then...
 	        						{
-	        							freshman++
+	        							freshman++ //concatenates freshman
 	        						}
 	        						
-	        					if(csvData[i] == "1" && csvData[i+1] == "0")
+	        					if(csvData[i] == "1" && csvData[i+1] == "0") //if csvData[i]  is 1 and the let after that is 0 then...
 	        						{
-	        							souphmore++
+	        							souphmore++ //concatenates souphmore
 	        						}	
 	        						
-	        					if(csvData[i] == "1" && csvData[i+1] == "1") 
+	        					if(csvData[i] == "1" && csvData[i+1] == "1") //if csvData[i]  is 1 and the let after that is 1 then...
 	        						{
-	        							junoir++
+	        							junoir++ //concatenates junoir
 	        						}	
 	        						
-	        					if(csvData[i] == "1" && csvData[i+1] == "2")
+	        					if(csvData[i] == "1" && csvData[i+1] == "2") //if csvData[i]  is 1 and the let after that is 2 then...
 	        						{
-	        							senoir++
+	        							senoir++ //concatenates senoir
 	        						}		
 	        				}    
-	 				}
-	   		    
-	   		    		 drawChart()
+	 				} 
+	 			}
+	 			
+	 			chartVaribleValues() //calling the function.   
+	 			drawChart() //Draws the chart.
 			} //This brace ends the function handleQueryResponse 
 			
+	
+
       		// Load the Visualization API and the corechart package.
      		 google.charts.load('current', {'packages':['corechart']});
 
@@ -179,13 +189,13 @@ Programming final project -->
       		// instantiates the pie chart, passes in the data and        
      		// draws it.
       
-      
+      	//Function of drawing the chart
       function drawChart() { 
       
         					// Create the data table.
         					var data = new google.visualization.DataTable();  
-       						 data.addColumn('string', 'Topping');
-       						 data.addColumn('number', 'Slices');              
+       						 data.addColumn('string', 'Grade');
+       						 data.addColumn('number', 'Number of people in that Grade');              
        						 data.addRows([
         					  ['Senoirs', senoir], //My info from the google forms.         
         					  ['Juniors', souphmore],
@@ -194,20 +204,16 @@ Programming final project -->
        					 ]);
 
         // These are the options I chose.        
-        var options = {'title':'Class survey of Ice Cream Flavors',  
+        var options = {'title':'The Grades of modle UN students',  
                        'width':800,
                        'height':500,
-                       'colors': ['red', '#59DF00', '#DFA800', '#F70000', '#C0F7FE','#0066FF', '#F7DE00', '#00FFFF'], 
+                       'colors': ['#59DF00', '#DFA800', '#F70000', '#C0F7FE','#0066FF', '#F7DE00', '#00FFFF'], 
                        'pieHole': 0.4,
                        'pieSliceTextStyle': {
             									color: 'black', 
           									},
-          				'slices': {  1: {offset: 0.2},
-                    			   7: {offset: 0.3}, 
-                    				4: {offset: 0.3}	
-          							}, 
-          				'backgroundColor': 'blue',	
-          				'is3D':true,  	
+          				
+          				'backgroundColor': '#88B8FF',	
           				'legend': {position: 'top', textStyle: {color: 'white', fontSize: 17}},     
           				'titleTextStyle': {color: '#FFFFFF',
 						'fontSize': '30',          									},	
@@ -223,42 +229,55 @@ Programming final project -->
 	</head>
  <body>
 	
-				<img src = Unknown.jpeg />
-		
+				<img src = Unknown.jpeg /> <!--Model UN Picture-->
+				
+	
 		<aside>
-				<a href = "Index.html">Home</a><br />
-			<a href = "About.html">About</a><br />
-			<a href = "Locations.html"> Locations</a><br />    
+		 <a href = "PJAQ4Index.html">Home</a><br />
+		 <a href = "PJAQ4aboutus.html">About Us</a><br />   <!--Links to other pages-->     
+	      <a href = "PJAQ4Locations.html"> Locations</a><br />    
 			
-		   
 		</aside>
-		
+		<div class="verticalLine">	
+		<br />
+		<br />
+		<br />     <!--Format spaces-->
+		<br />
+		<br />
+		<br />
+		<br />        
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
 		
 		<div id="chart_div"></div>     
+		<!--Where I put the Chart.-->
 		
-		<div class="verticalLine">	 
-		 <!--Load the AJAX API-->
 		 
 	<h3> 
+							<!--About UsText-->
 		Model UN
 			Bridging the Education Gap and Creating Global Citizens
 
 			Model United Nations is an authentic simulation of the UN General Assembly, UN Security Council, or other multilateral body, which introduces students to the world of diplomacy, negotiation, and decision making. 
 
-			At Model UN, students step into the shoes of ambassadors of countries that are members of the UN, from Argentina to Zimbabwe. The students, better known as “delegates”, debate current issues on the organization’s vast agenda. They prepare draft resolutions, plot strategy, negotiate with supporters and adversaries, resolve conflicts, and navigate the UN’s rules of procedure – all in the interest of resolving problems that affect the world.
+			At Model UN, students step into the shoes of ambassadors of countries that are members of the UN, from Argentina to Zimbabwe. The students, better known as delegates, debate current issues on the organizations vast agenda. They prepare draft resolutions, plot strategy, negotiate with supporters and adversaries, resolve conflicts, and navigate the UNs rules of procedure, all in the interest of resolving problems that affect the world.
 
-			Before playing out their ambassadorial roles in Model UN, students research the particular global problem to be addressed. The problems are drawn from today’s headlines. Model UN delegates learn how the international community acts on its concerns about peace and security, human rights, the environment, food and hunger, economic development, and globalization.
+			Before playing out their ambassadorial roles in Model UN, students research the particular global problem to be addressed. The problems are drawn from todays headlines. Model UN delegates learn how the international community acts on its concerns about peace and security, human rights, the environment, food and hunger, economic development, and globalization.
 
 <br />
 <br />
 
-			Model UN delegates also look closely at the needs, aspirations, and foreign policy of the country they will “represent” at the event. The insights they gain from their exploration of history, geography, mathematics, culture, economics, and science contribute to the authenticity of the simulations once the actual role-playing gets underway, and ensures a lively and memorable experience.
+			Model UN delegates also look closely at the needs, aspirations, and foreign policy of the country they will represent at the event. The insights they gain from their exploration of history, geography, mathematics, culture, economics, and science contribute to the authenticity of the simulations once the actual role-playing gets underway, and ensures a lively and memorable experience.
 
-			Model UN not only involves young people in the study and discussion of global issues, but also encourages the development of skills useful throughout their lives – skills including research techniques, writing, public speaking, problem-solving, conflict resolution, compromise, and cooperation.
+			Model UN not only involves young people in the study and discussion of global issues, but also encourages the development of skills useful throughout their lives, skills including research techniques, writing, public speaking, problem-solving, conflict resolution, compromise, and cooperation.
 
-			The popularity of participating in Model UN has contributed to the rapid growth of this activity over the past several decades. Many Model UN participants are repeaters, since the spirit of these simulations creates an appétit for this activity more commonly known as “M-U-N Fever”.
+			The popularity of participating in Model UN has contributed to the rapid growth of this activity over the past several decades. Many Model UN participants are repeaters, since the spirit of these simulations creates an appetit for this activity more commonly known as MUN Fever.
 
-			In fact, quite a few of today’s leaders in law, government, business, and the arts participated in Model UN during their academic careers – from U.S. Supreme Court Justice Stephen Breyer, to Chelsea Clinton and actor Samuel L. Jackson (Pulp Fiction).
+			In fact, quite a few of todays leaders in law, government, business, and the arts participated in Model UN during their academic careers from U.S. Supreme Court Justice Stephen Breyer, to Chelsea Clinton and actor Samuel L. Jackson (Pulp Fiction).
 
 			As many states move to implement standards for global citizenship, Model UN is proving to be an innovative resource to prepare students for career and college success.  
 	</h3>
@@ -267,7 +286,7 @@ Programming final project -->
 		
 		</br>
 		
-		<footer>   
+		<footer>			<!--My footer-->
 				Model UN Highschool Club Page <br />
 			<br>
 			Website owner and maker: Philip Ayoub and Alex Litt.
@@ -275,6 +294,11 @@ Programming final project -->
 		</footer>
 	</body>
 </html>
+	
+	
+	
+    
+    
 	
 	
 	
