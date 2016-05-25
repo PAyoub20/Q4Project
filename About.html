@@ -57,8 +57,8 @@ Programming final project -->
 		 	<script type="text/javascript" src="https://www.google.com/jsapi"> </script>
 		 	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"> </script> <!--  This is required!  It adds "loaders" for all of the Google APIs (Application Programming Interface) that will (may) be used in this program -->
 			<script type="text/javascript">  // This code *could* be put in another file...and likely I would ask you to do that, but it will make it too cumbersome for this tutorial!
-			location.reload();
-		 		var freshman = 0; //hold the number of freshman.
+
+		 	var freshman = 0; //hold the number of freshman.
 	       		var souphmore = 0;  //hold the number of sophomore.
 	    		var junoir = 0; //hold the number of junior.
 	        	var senoir = 0; //hold the number of senior.
@@ -113,7 +113,7 @@ Programming final project -->
 				} 
 				 
 			hold = hold.substring(0, hold.length-1);		 
-			csvData = hold;  
+			csvData = hold;   
 		}
 				CSVManipulation() //calling the function.
 			
@@ -151,7 +151,8 @@ Programming final project -->
 	 			drawChart() //Draws the chart.
 			} //This brace ends the function handleQueryResponse 
 			
-	
+				location.reload();
+
 
       		// Load the Visualization API and the corechart package.
      		 google.charts.load('current', {'packages':['corechart']});
