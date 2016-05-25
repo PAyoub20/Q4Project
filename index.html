@@ -98,14 +98,9 @@ Programming final project -->
        						 $(this)[0].action=submitURL;
        						 $('#input-feedback').text('Thank You!'); //says thank you after user summits a response
          
-   	         				 setInterval(function(){ resetForm();}, 1000); 
+   	         				 setInterval(function(){location.reload();}, 1000); 
    		   			 });
-   		   function resetForm()
-   		     {
-   		   	var form = document.getElementById("input-form");    
-   		   	form.reset();
-   		   	console.log("hi");
-   		     }
+   		   
    		    
 	</script>   
  <footer>   <!--My footer.-->     
