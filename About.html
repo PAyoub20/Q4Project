@@ -90,7 +90,7 @@ Programming final project -->
 		   csvData = google.visualization.dataTableToCsv(data); 		  
 			csvData = csvData.replace(/(\r\n|\n|\r)/gm,",");    //Makes all the break lines in CSVDATA commas.      
 	 
-	function CSVManipulation()
+	function CSVManipulation() //Function that edits csvData and maiupltaes it to take out the time stamp. 
 		{
 		 	for(var i = 0; i < csvData.length; i++)  //for loop that cycles through CVSDATA.
 				{ 
@@ -118,7 +118,7 @@ Programming final project -->
 				CSVManipulation() //calling the function.
 			
 			
-		function chartVaribleValues()
+		function chartVaribleValues() //A function that gives values to vailes based on csvdata info.   
 			{
 	        	for(var i = 0; i < csvData.length; i++)  //Cycles thought the new CSVDATA.
 	        		{
@@ -212,7 +212,7 @@ Programming final project -->
  
 		<br />
 		<br />
-			<h1>About the Model UN Program Page</h1>
+			<h1>About the Model UN Program Page</h1>   <!--My Title.        -->
 		<br />     <!--Format spaces-->
 		<br />
 		<br />
