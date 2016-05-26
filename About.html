@@ -67,7 +67,7 @@ Programming final project -->
 		 		var hold = ""; //holds info will manipulating it.
 		 		
 		 
-					google.load("visualization", '1', {packages:['corechart']});  // This loads the Google "Visualization" API, which is needed to use Google Charts or Google Tables.  It's required code!  The arguments are API, Version, Packages (this one is not required)
+      google.charts.load("current", {packages:["corechart"]});
 					google.setOnLoadCallback(readData);  // The google.setOnLoadCallback method will call the specified callback function once your d
       
 		function readData() {
@@ -203,12 +203,8 @@ Programming final project -->
       
 		</script>   
 	</head>
- <body>
-	
-			          <img class="fancybox" src="http://www.hastings.edu/sites/default/files/media/Departments/PoliticalScience/Images/model-un_grahpic.png" style="width: 25%"> 
-						 <!--Model UN Picture-->
-		
-		<div id="chart_div"></div>     
+ <body>	
+ <div id="chart_div"></div>     
 		<!--Where I put the Chart.-->
 		
 		 
