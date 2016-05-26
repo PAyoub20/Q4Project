@@ -131,17 +131,17 @@ Programming final project -->
 	        						
 	        					if(csvData[i] == "1" && csvData[i+1] == "0") //if csvData[i]  is 1 and the let after that is 0 then...
 	        						{
-	        							souphmore++ //concatenates souphmore
+	        							sophomore++ //concatenates souphmore
 	        						}	
 	        						
 	        					if(csvData[i] == "1" && csvData[i+1] == "1") //if csvData[i]  is 1 and the let after that is 1 then...
 	        						{
-	        							junoir++ //concatenates junoir
+	        							junior++ //concatenates junoir
 	        						}	
 	        						
 	        					if(csvData[i] == "1" && csvData[i+1] == "2") //if csvData[i]  is 1 and the let after that is 2 then...
 	        						{
-	        							senoir++ //concatenates senoir
+	        							senior++ //concatenates senior
 	        						}		
 	        				}    
 	 				} 
@@ -171,26 +171,28 @@ Programming final project -->
        						 data.addColumn('string', 'Grade');
        						 data.addColumn('number', 'Number of people in that Grade');              
        						 data.addRows([
-        					  ['Senoirs', senoir], //My info from the google forms.         
-        					  ['Juniors', junoir],
-         					  ['Sophomores', souphmore],  
+        					  ['Seniors', senior], //My info from the google forms.         
+        					  ['Juniors', junior],
+         					  ['Sophomores', sophomore],  
         					  ['Freshman',freshman ],
        					 ]);
 
         // These are the options I chose.        
-        var options = {'title':'The Grades of modle UN students',  
-                       'width':800,
-                       'height':500,
+        var options = {'title':'The Grades of Model UN Students',  
+                       'width':600,
+                       'height':350,
                        'colors': ['#59DF00', '#DFA800', '#F70000', '#C0F7FE','#0066FF', '#F7DE00', '#00FFFF'], 
                        'pieHole': 0.4,
+                       'backgroundColor' {
+                       fill: 'transparent'}
                        'pieSliceTextStyle': {
             									color: 'black', 
           									},
-          				
-          				'backgroundColor': '#88B8FF',	
+          	
           				'legend': {position: 'top', textStyle: {color: 'white', fontSize: 17}},     
           				'titleTextStyle': {color: '#FFFFFF',
-						'fontSize': '30',          									},	
+						'fontSize': '30',	
+						is3D: true
                        };
 
         // Instantiate and draw our chart, passing in some options.
