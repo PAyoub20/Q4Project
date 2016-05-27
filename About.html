@@ -64,6 +64,155 @@ Programming final project -->
         </div><!--/.nav-collapse -->
       </div>
     </nav>
+    
+    </style>  
+		 	<script type="text/javascript" src="https://www.google.com/jsapi"> </script>
+		 	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"> </script> <!--  This is required!  It adds "loaders" for all of the Google APIs (Application Programming Interface) that will (may) be used in this program -->
+			<script type="text/javascript">  // This code *could* be put in another file...and likely I would ask you to do that, but it will make it too cumbersome for this tutorial!
+			
+		 		var freshman = 0; //hold the number of freshman.
+	       		var souphmore = 0;  //hold the number of sophomore.
+	    		var junoir = 0; //hold the number of junior.
+	        	var senoir = 0; //hold the number of senior.
+	       	    var csvData =""; //CSVDATA  is the info from my google sheets
+	       		var commas = 1; //holds the number of commas used.
+		 		var hold = ""; //holds info will manipulating it.
+		 		
+		 
+					google.load("visualization", '1', {packages:['corechart']});  // This loads the Google "Visualization" API, which is needed to use Google Charts or Google Tables.  It's required code!  The arguments are API, Version, Packages (this one is not required)
+					google.setOnLoadCallback(readData);  // The google.setOnLoadCallback method will call the specified callback function once your d
+      
+		function readData() {
+		 						 var query = new google.visualization.Query(  // This Query is asking for the data from the Google Spreadsheet
+		  						//This is the URL of the data source -- it must be public and shared (see the video on creating a form and sharing settings).  This link has our TV watching data
+		  						'https://docs.google.com/spreadsheets/d/18vB4zi25lgvJQ5TVEV9od1PPA9PIO4F_vMI6TvZZIGk/edit#gid=1065580186');
+		  						// Send the query and when the query finishes, call the function "handleQueryResponse"
+								query.send(handleQueryResponse);
+							 }
+	
+		function handleQueryResponse(response) {// This is enacted when the query response is returned.  If the query was successful, the response is the data table.  If the query failed, an error is returned, no table
+		 											 if (response.isError()) {
+		   											 alert('Error in query: ' + response.getMessage() + ' ' + response.getDetailedMessage());
+		  											  return; //Alert the user with the error code and return to the place where this function was called
+		 										 }
+		 										 
+		  var data = response.getDataTable();
+		  console.log(data); 
+		  //If you prefer (now that we've done so much with parsing CSV data), you can get the data in CSV form
+		   csvData = google.visualization.dataTableToCsv(data); 		  
+			csvData = csvData.replace(/(\r\n|\n|\r)/gm,",");    //Makes all the break lines in CSVDATA commas.      
+	 
+	function CSVManipulation()
+		{
+		 	for(var i = 0; i < csvData.length; i++)  //for loop that cycles through CVSDATA.
+				{ 
+					if(commas %2 == 0) 
+						{
+							if(csvData[i] != ",")
+							{
+								hold += csvData[i] //adds values to hold.
+							}
+								if(csvData[i+1] == ",")
+									{
+										hold += "," //adds commas to hold. 
+									}
+						}
+					
+					if(csvData[i] == ",")
+						{
+							commas++ //concatenates commas.
+						}    
+				} 
+				 
+			hold = hold.substring(0, hold.length-1);		 
+			csvData = hold;  
+		}
+				CSVManipulation() //calling the function.
+			
+			
+		function chartVaribleValues()
+			{
+	        	for(var i = 0; i < csvData.length; i++)  //Cycles thought the new CSVDATA.
+	        		{
+	        			if(csvData[i] != ",") //if csvData[i] doesn't equal ",'.
+	        				{
+	        					if(csvData[i] == "9") //if csvData[i]  is 9 then...
+	        						{
+	        							freshman++ //concatenates freshman
+	        						}
+	        						
+	        					if(csvData[i] == "1" && csvData[i+1] == "0") //if csvData[i]  is 1 and the let after that is 0 then...
+	        						{
+	        							souphmore++ //concatenates souphmore
+	        						}	
+	        						
+	        					if(csvData[i] == "1" && csvData[i+1] == "1") //if csvData[i]  is 1 and the let after that is 1 then...
+	        						{
+	        							junoir++ //concatenates junoir
+	        						}	
+	        						
+	        					if(csvData[i] == "1" && csvData[i+1] == "2") //if csvData[i]  is 1 and the let after that is 2 then...
+	        						{
+	        							senoir++ //concatenates senoir
+	        						}		
+	        				}    
+	 				} 
+	 			}
+	 			
+	 			chartVaribleValues() //calling the function.   
+	 			drawChart() //Draws the chart.
+			} //This brace ends the function handleQueryResponse 
+			
+	
+
+      		// Load the Visualization API and the corechart package.
+     		 google.charts.load('current', {'packages':['corechart']});
+
+      		// Set a callback to run when the Google Visualization API is loaded.
+      		google.charts.setOnLoadCallback(drawChart);
+
+      		// Callback that creates and populates a data table,         
+      		// instantiates the pie chart, passes in the data and        
+     		// draws it.
+      
+      	//Function of drawing the chart
+      function drawChart() { 
+      
+        					// Create the data table.
+        					var data = new google.visualization.DataTable();  
+       						 data.addColumn('string', 'Grade');
+       						 data.addColumn('number', 'Number of people in that Grade');              
+       						 data.addRows([
+        					  ['Senoirs', senoir], //My info from the google forms.         
+        					  ['Juniors', souphmore],
+         					  ['Sophomores', junoir],  
+        					  ['Freshman',freshman ],
+       					 ]);
+
+        // These are the options I chose.        
+        var options = {'title':'The Grades of modle UN students',  
+                       'width':800,
+                       'height':500,
+                       'colors': ['#59DF00', '#DFA800', '#F70000', '#C0F7FE','#0066FF', '#F7DE00', '#00FFFF'], 
+                       'pieHole': 0.4,
+                       'pieSliceTextStyle': {
+            									color: 'black', 
+          									},
+          				
+          				'backgroundColor': '#88B8FF',	
+          				'legend': {position: 'top', textStyle: {color: 'white', fontSize: 17}},     
+          				'titleTextStyle': {color: '#FFFFFF',
+						'fontSize': '30',          									},	
+                       };
+
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.PieChart(document.getElementById('chart_div'));    
+        chart.draw(data, options);
+      }
+      
+      
+		</script>   
+    
  <div class="container">
       <div class="row" id="chart_div">
         <div class="col-md-4">
