@@ -100,8 +100,9 @@ Programming final project -->
 		  console.log(data); 
 		  //If you prefer (now that we've done so much with parsing CSV data), you can get the data in CSV form
 		   csvData = google.visualization.dataTableToCsv(data); 		  
-			csvData = csvData.replace(/(\r\n|\n|\r)/gm,",");    //Makes all the break lines in CSVDATA commas.      
-	 
+			csvData = csvData.replace(/(\r\n|\n|\r)/gm,",");    //Makes all the break lines in CSVDATA commas.   
+			   
+	 		//Changes CSV/Manupaltes it to not have the time stamp in it.   
 	function CSVManipulation()
 		{
 		 	for(var i = 0; i < csvData.length; i++)  //for loop that cycles through CVSDATA.
@@ -124,12 +125,12 @@ Programming final project -->
 						}    
 				} 
 				 
-			hold = hold.substring(0, hold.length-1);		 
+			hold = hold.substring(0, hold.length-1); //edits hold to take the last value off the end.   
 			csvData = hold;  
 		}
 				CSVManipulation() //calling the function.
 			
-			
+			//Gives the varibles values based on CSV Data.         
 		function chartVaribleValues()
 			{
 	        	for(var i = 0; i < csvData.length; i++)  //Cycles thought the new CSVDATA.
