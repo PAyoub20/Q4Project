@@ -90,26 +90,24 @@ Programming final project -->
         		<!--My forms code -->     
 		<form id="input-form" action="" method="POST" target="no-target">
  			 <input id="input-q1" placeholder="Grade? (Ie.9)" name="q1"> </input> <!--My Question.-->     
-			  <button id="form-submit" type="submit">SUBMIT</button>
+			  <button id="form-submit" type="submit">SUBMIT</button> <!--//Summit Button.-->    
 		</form>
 
         <p id="input-feedback"></p>
       </div>
     </div>
-  </div>
- 
-
-
+  </div>   
+      
 
 <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script> 
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
  
-	<script>										//Links my forms submit button to a google forms and sends it to a google sheet.
+	<script>				//Links my forms submit button to a google forms and sends it to a google sheet.
   	 	 $('#input-form').one('submit',function(){
        						 var inputq1 = encodeURIComponent($('#input-q1').val());
       						 var q1ID = "entry_2071262986";  //googel forms Question 1 spot ID.    
        	    					 var baseURL = 'https://docs.google.com/a/greenwichschools.org/forms/d/1hIR2DmS3Ms9IowP1uSPa1tlp9zpRKZBOYEvKdOgryOU/formResponse?';  //link to my google forms.
-      						 var submitRef = '&submit=Submit';                           
+      						 var submitRef = '&submit=Submit';  //Summit links to the summit button.                            
       						 var submitURL = (baseURL + q1ID + "=" + inputq1 + submitRef);
        						console.log(submitURL); //console.logs submitURL
        						 $(this)[0].action=submitURL;
