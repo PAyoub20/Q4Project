@@ -1,4 +1,4 @@
-/* Philip Ayoub 
+-/* Philip Ayoub 
 4/17/2015
 Programming final project */
  
@@ -30,22 +30,18 @@ Programming final project */
  	      	      
 		
  		}
- 		
- h2 {
+ h3 { 
  	font-weight: 650;
  	color: #666;
- 	font-family: 'Lato', Arial, sans-serif;
- 	font-size: 34px;
- }
-
- h3 { font-weight: 650;
- color: #666;
-     font-family: 'Lato', Arial, sans-serif;
+     	font-family: 'Lato', Arial, sans-serif;
  		}
  
- h4 { color: #003398;}
+ h4 { 
+ 	color: #003398;
+ }
  
- h5 {color: white;
+ h5 {
+ 	color: white;
 	text-decoration: bold;
 }
 
@@ -57,7 +53,6 @@ aside {
   		
   		
  aside a {
- 		     	
  	color: black;
  	font-size: 0.9em;
  	text-decoration: none;
@@ -70,35 +65,32 @@ aside {
  	padding: 13%;
  	font-size: 1.7em;
  	text-align: justify;
- 	
- 				
-		}
+ 	}
 	              
-aside a:hover { background: white;
-			 border-radius: 30px;
-				  
-		}
+aside a:hover { 
+	background: white;
+	border-radius: 30px;
+	}
 
 					 
 
 		
-img { border-radius: 30px;
-		width: 100%;
-		height: auto;
-		
-		 
-		}
-		
-	th { color: black;
+img { 
+	border-radius: 30px;
+	width: 100%;
+	height: auto;
+	}
+	th { 
+		color: black;
 		font-size: 2.0em;
-		
 		}
 	        
-	td { color: #003398;
-		font-size: 2.0em;}
+	td { 
+		color: #003398;
+		font-size: 2.0em;
+	}
 		
 		
-
 footer { 
 				margin-left:2.7%;
 				width: 90%;
@@ -110,6 +102,4 @@ footer {
 				text-align: center;
 				border-bottom-left-radius: 25px;
 				border-bottom-right-radius: 25px;
-				
-				
 		}
