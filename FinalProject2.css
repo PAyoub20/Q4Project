@@ -37,6 +37,13 @@ Programming final project */
     line-height: 100%;
     color: #666;
  }
+ h3 {
+    font-family: 'Lato', Arial, sans-serif;
+    font-size: 24px;
+    font-weight: 150;
+    line-height: 100%;
+    color: #666;
+ }
  
  h4 { 
  	color: #003398;
