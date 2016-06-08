@@ -1,0 +1,115 @@
+-/* Philip Ayoub 
+ -4/17/2015
+ -Programming final project */
+ -
+ -
+ -a.fancybox img {
+ -        border: none;
+ -        box-shadow: 0 1px 7px rgba(0,0,0,0.6);
+ -        -o-transform: scale(1,1); -ms-transform: scale(1,1); -moz-transform: scale(1,1); -webkit-transform: scale(1,1); transform: scale(1,1); -o-transition: all 0.2s ease-in-out; -ms-transition: all 0.2s ease-in-out; -moz-transition: all 0.2s ease-in-out; -webkit-transition: all 0.2s ease-in-out; transition: all 0.2s ease-in-out;
+ -    } 
+ -    a.fancybox:hover img {
+ -        position: relative; z-index: 999; -o-transform: scale(1.03,1.03); -ms-transform: scale(1.03,1.03); -moz-transform: scale(1.03,1.03); -webkit-transform: scale(1.03,1.03); transform: scale(1.03,1.03);
+ -    }
+ -body {
+ -		
+ -		background-color: #F0F8FF ;
+ -		font-family: Verdana, Geneva, Arial, Hevetica, sans-serif;
+ -		color: black;
+ -		
+ -		
+ -	 }
+ -
+ -	 
+ - h1 { 	  
+ - 			font-size: 2.5em;
+ -	      padding-top: 2%;
+ -	      color: black;
+ -	      text-align: center;
+ -	      text-decoration: underline;
+ -	      	      
+ -		
+ -		}
+ -		
+ -h2 {
+ -	font-weight: 650;
+ -	color: #666;
+ -	font-family: 'Lato', Arial, sans-serif;
+ -	font-size: 34px;
+ -}
+ -
+ -h3 { font-weight: 650;
+ -color: #666;
+ -    font-family: 'Lato', Arial, sans-serif;
+ -		}
+ -
+ -h4 { color: #003398;}
+ -
+ -h5 {color: white;
+ -	text-decoration: bold;
+ -	}
+ -
+ -aside { 
+ - 		float: right;
+ - 		margin-top: 3%;
+ -  		}
+ - 		
+ - 		
+ - 		
+ -aside a {
+ -		     	
+ -	color: black;
+ -	font-size: 0.9em;
+ -	text-decoration: none;
+ -	
+ -	float: right;
+ -	vertical-align: straight;
+ -	margin-top: 40%;
+ -	vertical-align: center;
+ -	text-align: right;
+ -	padding: 13%;
+ -	font-size: 1.7em;
+ -	text-align: justify;
+ -	
+ -				
+ -		}
+ -	              
+ -aside a:hover { background: white;
+ -			 border-radius: 30px;
+ -				  
+ -		}
+ - 
+ -					 
+ -
+ - 		
+ - img { border-radius: 30px;
+ - 		width: 100%;
+ - 		height: auto;
+ - 		
+ - 		 
+ - 		}
+ - 		
+ - 	th { color: black;
+ - 		font-size: 2.0em;
+ - 		
+ - 		}
+ - 	        
+ - 	td { color: #003398;
+ - 		font-size: 2.0em;}
+ - 		
+ - 		
+ -
+ -footer { 
+ -				margin-left:2.7%;
+ -				width: 90%;
+ -				padding: 30px;
+ -				background-color: white;
+ -				clear: both;
+ -				color: #003398;
+ -				font-weight: bold;
+ -				text-align: center;
+ -				border-bottom-left-radius: 25px;
+ -				border-bottom-right-radius: 25px;
+ -				
+ -				
+ - 		}
