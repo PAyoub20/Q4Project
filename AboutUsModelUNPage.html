@@ -130,7 +130,7 @@ google.charts.load("current", {packages:["corechart"]});
 google.charts.setOnLoadCallback(readData);  // The google.setOnLoadCallback method will call the specified callback function once your d
 
 function readData() {
-	var query = new google.visualization.Query('https://docs.google.com/spreadsheets/d/18vB4zi25lgvJQ5TVEV9od1PPA9PIO4F_vMI6TvZZIGk/edit#gid=1065580186');
+	var query = new google.visualization.Query('https://docs.google.com/spreadsheets/d/18vB4zi25lgvJQ5TVEV9od1PPA9PIO4F_vMI6TvZZIGk/edit#gid=1065580186/gviz/tq?tq=select%20B%0A');
 	// Send the query and when the query finishes, call the function "handleQueryResponse"
 	query.send(handleQueryResponse);
 }
@@ -145,7 +145,7 @@ var data = response.getDataTable();
 console.log(data); 
 //If you prefer (now that we've done so much with parsing CSV data), you can get the data in CSV form
 csvData = google.visualization.dataTableToCsv(data); 		  
-csvData = csvData.replace(/(\r\n|\n|\r)/gm,",");    //Makes all the break lines in CSVDATA commas.      
+//csvData = csvData.replace(/(\r\n|\n|\r)/gm,",");    //Makes all the break lines in CSVDATA commas.      
 
 function CSVManipulation() //Function that edits csvData and maiupltaes it to take out the time stamp. 
 {
@@ -172,8 +172,9 @@ commas++ //concatenates commas.
 hold = hold.substring(0, hold.length-1);		 
 csvData = hold;   
 }
-CSVManipulation() //calling the function.
+//CSVManipulation() //calling the function.
 
+console.log(csvData);
 
 function chartVaribleValues() //A function that gives values to vailes based on csvdata info.   
 {
