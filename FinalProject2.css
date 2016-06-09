@@ -11,16 +11,6 @@ Programming final project */
      a.fancybox:hover img {
          position: relative; z-index: 999;o-transform: scale(1.03,1.03);ms-transform: scale(1.03,1.03);moz-transform: scale(1.03,1.03);webkit-transform: scale(1.03,1.03); transform: scale(1.03,1.03);
      }
- body {
- 		
- 		background-color: #F0F8FF ;
- 		font-family: Verdana, Geneva, Arial, Hevetica, sans-serif;
- 		color: black;
- 		
- 		
- 	 }
- 
- 	 
   h1 { 	  
   	      font-size: 2.5em;
  	      padding-top: 2%;
