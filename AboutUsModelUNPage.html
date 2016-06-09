@@ -144,41 +144,6 @@ return; //Alert the user with the error code and return to the place where this 
 var data = response.getDataTable();
 //If you prefer (now that we've done so much with parsing CSV data), you can get the data in CSV form
 csvData = google.visualization.dataTableToCsv(data); 		  
-//csvData = csvData.replace(/(\r\n|\n|\r)/gm,",");    //Makes all the break lines in CSVDATA commas.      
-
-
-console.log(csvData);
-console.log(csvData.length);
-
-
-function CSVManipulation() //Function that edits csvData and maiupltaes it to take out the time stamp. 
-{
-for(var i = 0; i < csvData.length; i++)  //for loop that cycles through CVSDATA.
-{ 
-if(commas %2 == 0) 
-{
-if(csvData[i] != ",")
-{
-hold += csvData[i] //adds values to hold.
-}
-if(csvData[i+1] == ",")
-{
-hold += "," //adds commas to hold. 
-}
-}
-
-if(csvData[i] == ",")
-{
-commas++ //concatenates commas.
-}    
-} 
-
-hold = hold.substring(0, hold.length-1);		 
-csvData = hold;   
-}
-//CSVManipulation() //calling the function.
-
-
 
 function chartVaribleValues() //A function that gives values to vailes based on csvdata info.   
 {
