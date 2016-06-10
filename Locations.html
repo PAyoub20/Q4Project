@@ -81,6 +81,7 @@ Programming final project -->
 <!--CSS for my map.-->
 		<img class ="fancybox" src = "Map2.png" 
 			usemap = "#map" /> 
+<script>
 $(function($){
 var addToAll = false;
 var gallery = false;
@@ -99,6 +100,7 @@ $(addToAll ? 'img' : 'img.fancybox').each(function(){
         });
     });
     $.noConflict();
+    </script>
 			
 				<map name ="map" >   	 <!--Creating diffrent hot spots for my mapwiht their x and y axis and shapeand linking them to diffrent website.-->
 				<area name="Greenwich" shape ="rect"
