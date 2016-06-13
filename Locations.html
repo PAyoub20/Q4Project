@@ -80,26 +80,7 @@ Programming final project -->
 <!--CSS for my map.-->
 <!--CSS for my map.-->
 	
-<script>
-$(function($){
-var addToAll = false;
-var gallery = false;
-var titlePosition = 'inside';
-$(addToAll ? 'img' : 'img.fancybox').each(function(){
-	var $this = $(this);
-        var title = $this.attr('title');
-        var src = $this.attr('data-big') || $this.attr('src');
-        var a = $('<a href="#" target="_blank" class="fancybox"></a>').attr('href', src).attr('title', title);
-        $this.wrap(a);
-});
-	if (gallery)
-            $('a.fancybox').attr('rel', 'fancyboxgallery');
-        $('a.fancybox').fancybox({
-            titlePosition: titlePosition
-        });
-    });
-    $.noConflict();
-    </script>
+
    <div class="map"> 			<!--CSS for my map.-->
 		<img style="width:500; height: 500;  padding-bottom: 5%;  margin-left: 26%; margin-top: 8%;" src = "Map2.png" 
 			usemap = "#map" /> 
