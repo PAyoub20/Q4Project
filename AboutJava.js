@@ -1,4 +1,4 @@
-<!--  This is required!  It adds "loaders" for all of the Google APIs (Application Programming Interface) that will (may) be used in this program -->
+//This is required!  It adds "loaders" for all of the Google APIs (Application Programming Interface) that will (may) be used in this program -->
 var freshman = 0; //hold the number of freshman.
 var sophomore = 0;  //hold the number of sophomore.
 var junior = 0; //hold the number of junior.
