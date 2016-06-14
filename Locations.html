@@ -79,28 +79,43 @@ Programming final project -->
 <!--My Map-->
 <!--CSS for my map.-->
 <!--CSS for my map.-->
-	
-
-   <div class="map"> 			<!--CSS for my map.-->
-		<img style="width:500; height: 500;  padding-bottom: 5%;  margin-left: 26%; margin-top: 8%;" src = "Map2.png" 
+		<img class ="fancybox" src = "Map2.png" 
 			usemap = "#map" /> 
+<script>
+$(function($){
+var addToAll = false;
+var gallery = false;
+var titlePosition = 'inside';
+$(addToAll ? 'img' : 'img.fancybox').each(function(){
+	var $this = $(this);
+        var title = $this.attr('title');
+        var src = $this.attr('data-big') || $this.attr('src');
+        var a = $('<a href="#" target="_blank" class="fancybox"></a>').attr('href', src).attr('title', title);
+        $this.wrap(a);
+});
+	if (gallery)
+            $('a.fancybox').attr('rel', 'fancyboxgallery');
+        $('a.fancybox').fancybox({
+            titlePosition: titlePosition
+        });
+    });
+    $.noConflict();
+    </script>
 			
 				<map name ="map" >   	 <!--Creating diffrent hot spots for my mapwiht their x and y axis and shapeand linking them to diffrent website.-->
 				<area name="Greenwich" shape ="rect"
-				coords ="155,259,139,307"
+				coords ="155,230,139,307"
 				href= "http://www.greenwichschools.org/page.cfm?p=20"/>  <!-- Greenwich hot point-->    
 			
-					<area name ="Wick" shape = "rect" coords ="115,259,129,307" 
+					<area name ="Wick" shape = "rect" coords ="110,230,129,307" 
 					href = "http://www.brunswickschool.org"/>   <!-- Bruinswick hot point-->
 					
-				   <area name ="Darian" shape = "rect" coords ="391,179,410,225" 
+				   <area name ="Darian" shape = "rect" coords ="391,140,410,225" 
 					href = "http://darien.finalsite.com/page.cfm?p=503"/> <!-- Darian hot point.-->
 					
-				   <area name ="WestHill" shape = "rect" coords ="217,100,239,199" 
+				   <area name ="WestHill" shape = "rect" coords ="217,90,239,199" 
 					href = "http://www.westhillweb.com"/> <!-- Westhill-->
 			</map>
-		 
-			</div>        
 		 
 			</div>        
 	</div>
